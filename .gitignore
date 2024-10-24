@@ -1,6 +1,9 @@
+# Python artifacts
 __pycache__
 *PythonEnv/
 .ipynb_checkpoints
+
+# Data sets
 ember_model.txt
 data/archives
 data/path.dataset/*csv
@@ -22,3 +25,6 @@ evaluation/adversarial/mab_malware
 *pickle
 *.api
 *torch
+
+# Documentation editor
+.obsidian
