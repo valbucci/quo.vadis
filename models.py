@@ -454,7 +454,7 @@ class CompositeClassifier(object):
             else:
                 errmsg = f"[-] No pre-trained late fusion model for this configuration: {self.meta_model_path}. You need to .fit() it!"
                 logging.error(errmsg)
-                optionlist = [x for x in os.listdir(self.root + f"modules/meta_model/") if x.endswith('.model')]
+                optionlist = [x for x in os.listdir(self.root + "modules/meta_model/") if x.endswith('.model')]
                 modulelist = [x.replace('.model','').split('_')[1:] for x in optionlist]
                 modellist = [x.replace('.model','').split('_')[0].replace('15','') for x in optionlist]
                 infolist = '\n\t\t'.join(['meta_model=\'{0}\', modules={1}'.format(x,y) for x,y in zip(modellist, modulelist)])
@@ -508,7 +508,7 @@ class CompositeClassifier(object):
             if self.x is not None:
                 x = self.x
             else:
-                logging.error(f"[-] Input array is not defined...")
+                logging.error("[-] Input array is not defined...")
                 return None
 
         probs = self.predict_proba(x)[:,1]
@@ -556,9 +556,13 @@ class CompositeClassifier(object):
                 if pe in self.modules["filepaths"].filepath_db:
                     filepath = self.modules["filepaths"].filepath_db[pe]
                 else: # not in database
-                    missing_filepath_error = f"In-the-wild filepath for {pe} is not specified.\n\tAddress using one of the following options in preprocess_pelist():\
-\n\t\t a) 'pathlist=' defining in-the-wild filepath for every provided PE file,\n\t\t b) 'defaultpath=' to use the same path for every PE,\
-\n\t\t c) 'takepath=True' to use current path on the system,\n\t\t d) remove 'filepaths' from 'modules='."
+                    missing_filepath_error = \
+                        f"In-the-wild filepath for {pe} is not specified.\
+                        \n\tAddress using one of the following options in preprocess_pelist():\
+                        \n\t\t a) 'pathlist=' defining in-the-wild filepath for every provided PE file,\
+                        \n\t\t b) 'defaultpath=' to use the same path for every PE,\
+                        \n\t\t c) 'takepath=True' to use current path on the system,\
+                        \n\t\t d) remove 'filepaths' from 'modules='."
                     raise ValueError(missing_filepath_error)
 
         # acquire fullpath of pe if not provided
@@ -608,7 +612,7 @@ class CompositeClassifier(object):
         x = []
         path = None
         if pathlist and len(pelist) != len(pathlist):
-            raise Exception(f"Length of provided pathlist doesn't match length of provided PE file list.")
+            raise Exception("Length of provided pathlist doesn't match length of provided PE file list.")
         
         for i,pe in enumerate(pelist):
             if pathlist:
