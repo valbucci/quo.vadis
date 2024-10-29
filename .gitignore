@@ -25,6 +25,8 @@ evaluation/adversarial/mab_malware
 *pickle
 *.api
 *torch
+malware_hashes.txt
+notebooks/emulation/*.csv
 
 # Documentation editor
 .obsidian
