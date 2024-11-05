@@ -26,6 +26,7 @@ evaluation/adversarial/mab_malware
 *.api
 *torch
 malware_hashes.txt
+clean_hashes.txt
 notebooks/emulation/*.csv
 
 # Documentation editor
