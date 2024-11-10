@@ -29,5 +29,6 @@ malware_hashes.txt
 clean_hashes.txt
 notebooks/emulation/*.csv
 
-# Documentation editor
+# Internal configurations
+.vscode
 .obsidian
