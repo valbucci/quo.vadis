@@ -177,7 +177,8 @@ class Core1DConvNetAPI(object):
             preds = torch.argmax(logits, dim=1).flatten()     
             
             accuracy = (preds == target).cpu().numpy().mean() * 100
-            f1 = f1_score(target, preds)
+            # f1 = f1_score(target, preds)
+            f1 = f1_score(target.cpu().numpy(), preds.cpu().numpy())
             train_metrics.append([accuracy, f1])
             
             if batch_idx % verbosity_batches == 0:
@@ -228,7 +229,8 @@ class Core1DConvNetAPI(object):
             preds = torch.argmax(logits, dim=1).flatten()
 
             accuracy = (preds == target).cpu().numpy().mean() * 100
-            f1 = f1_score(target, preds)
+            # f1 = f1_score(target, preds)
+            f1 = f1_score(target.cpu().numpy(), preds.cpu().numpy())
             val_metrics.append([accuracy, f1])
             
         return val_loss, np.array(val_metrics).mean(axis=0).reshape(-1,2)
