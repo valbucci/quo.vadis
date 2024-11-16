@@ -177,7 +177,6 @@ class Core1DConvNetAPI(object):
             preds = torch.argmax(logits, dim=1).flatten()     
             
             accuracy = (preds == target).cpu().numpy().mean() * 100
-            # f1 = f1_score(target, preds)
             f1 = f1_score(target.cpu().numpy(), preds.cpu().numpy())
             train_metrics.append([accuracy, f1])
             
@@ -229,7 +228,6 @@ class Core1DConvNetAPI(object):
             preds = torch.argmax(logits, dim=1).flatten()
 
             accuracy = (preds == target).cpu().numpy().mean() * 100
-            # f1 = f1_score(target, preds)
             f1 = f1_score(target.cpu().numpy(), preds.cpu().numpy())
             val_metrics.append([accuracy, f1])
             
